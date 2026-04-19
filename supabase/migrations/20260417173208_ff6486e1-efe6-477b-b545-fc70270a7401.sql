@@ -1,0 +1,1 @@
+ALTER TABLE public.announcements ADD COLUMN IF NOT EXISTS send_to_solicitantes_only boolean NOT NULL DEFAULT false;

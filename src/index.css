@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 98%;
+    --foreground: 222 47% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 22%;
+    --primary-foreground: 210 40% 98%;
+
+    --primary-light: 217 91% 56%;
+    --primary-glow: 213 94% 68%;
+
+    --secondary: 215 25% 95%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 16% 96%;
+    --muted-foreground: 220 9% 42%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --urgent: 0 84% 60%;
+    --urgent-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 25%;
+
+    --radius: 0.875rem;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 215 25% 75%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 35% 14%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 222 35% 14%;
+    --sidebar-ring: 217 91% 60%;
+    --sidebar-muted: 222 30% 20%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(221, 83%, 35%), hsl(217, 91%, 56%));
+    --gradient-welcome: linear-gradient(135deg, hsl(217, 91%, 50%) 0%, hsl(221, 83%, 38%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(213, 94%, 68%));
+    --gradient-sidebar: linear-gradient(180deg, hsl(222, 47%, 7%) 0%, hsl(222, 47%, 10%) 100%);
+    --shadow-card: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 1px 1px -1px rgba(15, 23, 42, 0.03);
+    --shadow-elevated: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+    --shadow-soft: 0 8px 30px -8px rgba(15, 23, 42, 0.08);
+    --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.18);
+    --shadow-welcome: 0 20px 40px -15px hsl(217 91% 50% / 0.45);
+  }
+
+  .gradient-welcome { background: var(--gradient-welcome); }
+  .shadow-welcome { box-shadow: var(--shadow-welcome); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  .gradient-sidebar {
+    background: var(--gradient-sidebar);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  .shadow-modal {
+    box-shadow: var(--shadow-modal);
+  }
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Slide-in animation */
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(220, 13%, 80%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(220, 13%, 70%);
+}
+
+/* Print styles */
+@media print {
+  body { background: white !important; }
+  .print\:hidden { display: none !important; }
+  .print-area { padding: 0; }
+  .print\:block { display: block !important; }
+  .shadow-card, .shadow-elevated, .shadow-modal { box-shadow: none !important; }
+  .bg-card { background: white !important; }
+  .border { border-color: #e5e7eb !important; }
+}
